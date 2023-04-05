@@ -40,4 +40,3 @@ spec:
     singular: mysql
     shortNames:
       - ms
-  schema:
