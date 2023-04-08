@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web-pod
+  labels:
+    app: web
+spec:
+  containers:
+  - name: nginx
+    image: vials/test:latest
+    imagePullPolicy: Always
+    readinessProbe:
+      httpGet:
+        path: /
+        port: 8000
+    livenessProbe:
+      tcpSocket: { port: 8000 }
+    volumeMounts:
+    - name: app
+      mountPath: /app
+  initContainers:
+  - name: init-test
+    image: busybox:1.31.0
+    command: ['sh', '-c', 'wget -O- https://tinyurl.com/otus-k8s-intro | sh']
+    volumeMounts:
+    - name: app
+      mountPath: /app
+  volumes:
+  - name: app
+    emptyDir: {}
