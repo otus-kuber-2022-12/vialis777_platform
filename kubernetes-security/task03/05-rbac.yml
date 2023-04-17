@@ -21,7 +21,7 @@ metadata:
   name: dev-view
   namespace: dev
 subjects:
-- kind: User
+- kind: ServiceAccount
   name: ken
   apiGroup: rbac.authorization.k8s.io
 roleRef:
