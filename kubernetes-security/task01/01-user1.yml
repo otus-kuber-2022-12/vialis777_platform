@@ -7,7 +7,7 @@ metadata:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: cluster-admin
+  name: admin
 rules:
 - apiGroups:
   - '*'
@@ -31,5 +31,5 @@ subjects:
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: ClusterRole
-  name: cluster-admin
+  name: admin
   apiGroup: rbac.authorization.k8s.io
