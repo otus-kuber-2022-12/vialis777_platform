@@ -1,0 +1,16 @@
+config:
+  clients:
+    - url: http://loki-loki-distributed-gateway/loki/api/v1/push
+  snippets:
+    pipelineStages:
+      - cri: {}
+      - multiline:
+          firstline: '\d{4}-\d{1,2}-\d{1,2} \d{1,2}:\d{1,2}:\d{1,2}\.\d{3}'
+          max_wait_time: 3s
+
+tolerations:
+  - key: node-role
+    operator: Equal
+    value: infra
+    effect: NoSchedule
+
